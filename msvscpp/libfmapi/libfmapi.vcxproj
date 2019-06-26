@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\MasterProperties.include" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="VSDebug|x64">
+      <Configuration>VSDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>$(VCProjectVersion)</VCProjectVersion>
+    <ProjectGuid>{CDB03E65-C81B-47E0-B70F-C880D841DD61}</ProjectGuid>
+    <RootNamespace>libfmapi</RootNamespace>
+    <WindowsTargetPlatformVersion>$(WindowsSDKVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror;..\..\libcdata;..\..\libcthreads;..\..\libcnotify;..\..\libuna;..\..\libfdatetime;..\..\libfguid;..\..\libfwnt</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCSTRING;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBCNOTIFY;HAVE_LOCAL_LIBUNA;HAVE_LOCAL_LIBFDATETIME;HAVE_LOCAL_LIBFGUID;HAVE_LOCAL_LIBFWNT;HAVE_LOCAL_LIBFMAPI;HAVE_LOCAL_LIBCDATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror;..\..\libcdata;..\..\libcthreads;..\..\libcnotify;..\..\libuna;..\..\libfdatetime;..\..\libfguid;..\..\libfwnt</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCSTRING;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBCNOTIFY;HAVE_LOCAL_LIBUNA;HAVE_LOCAL_LIBFDATETIME;HAVE_LOCAL_LIBFGUID;HAVE_LOCAL_LIBFWNT;HAVE_LOCAL_LIBFMAPI;HAVE_LOCAL_LIBCDATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libfmapi\libfmapi_checksum.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_class_identifier.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_codepage.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_debug.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_entry_identifier.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_lzfu.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_one_off_entry_identifier.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_property_type.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_service_provider_identifier.c" />
+    <ClCompile Include="..\..\libfmapi\libfmapi_value_type.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libfmapi\libfmapi_checksum.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_class_identifier.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_codepage.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_debug.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_definitions.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_entry_identifier.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_extern.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_guid.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libcerror.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libcnotify.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libcstring.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libfdatetime.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libfguid.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libfwnt.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_libuna.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_lzfu.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_one_off_entry_identifier.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_property_type.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_service_provider_identifier.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_types.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_value_type.h" />
+    <ClInclude Include="..\..\libfmapi\libfmapi_x400_object_identifier.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

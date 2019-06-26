@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ToolsVersion>16.0</ToolsVersion>
+        <PlatformToolset>v142</PlatformToolset>
+        <WindowsSDKVersion>10.0.17134.0</WindowsSDKVersion>
+        <Platform>x64</Platform>
+        <ReleaseBuildDirectoryName>bin</ReleaseBuildDirectoryName>
+        <StandardCppProperties>Platform=$(Platform);VisualStudioVersion=$(ToolsVersion)</StandardCppProperties>
+    </PropertyGroup>
+</Project>

@@ -186,3 +186,12 @@ stamp-h[1-9]
 /libfvalue
 /libfwnt
 /libuna
+/zlib*
+
+*.user
+*.suo
+*.tlog
+.vs/
+Release/
+Debug/
+VSDebug/

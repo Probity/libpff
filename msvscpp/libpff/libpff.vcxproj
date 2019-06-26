@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\MasterProperties.include" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>$(VCProjectVersion)</VCProjectVersion>
+    <ProjectGuid>{4887EE5D-4366-45C6-9C18-AB3309BAE59E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libpff</RootNamespace>
+    <WindowsTargetPlatformVersion>$(WindowsSDKVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LIbraryPath_x64);$(UniversalCRT_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LIbraryPath_x64);$(UniversalCRT_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBCTHREADS;HAVE_LOCAL_LIBCDATA;HAVE_LOCAL_LIBCLOCALE;HAVE_LOCAL_LIBCNOTIFY;HAVE_LOCAL_LIBCSPLIT;HAVE_LOCAL_LIBUNA;HAVE_LOCAL_LIBCFILE;HAVE_LOCAL_LIBCPATH;HAVE_LOCAL_LIBBFIO;HAVE_LOCAL_LIBFCACHE;HAVE_LOCAL_LIBFDATA;HAVE_LOCAL_LIBFDATETIME;HAVE_LOCAL_LIBFGUID;HAVE_LOCAL_LIBFWNT;HAVE_LOCAL_LIBFMAPI;ZLIB_DLL;LIBPFF_DLL_EXPORT;NOUNCRYPT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror;..\..\libcthreads;..\..\libcdata;..\..\libclocale;..\..\libcnotify;..\..\libcsplit;..\..\libuna;..\..\libcfile;..\..\libcpath;..\..\libbfio;..\..\libfcache;..\..\libfdata;..\..\libfdatetime;..\..\libfguid;..\..\libfwnt;..\..\libfmapi;..\..\zlib1211</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBCTHREADS;HAVE_LOCAL_LIBCDATA;HAVE_LOCAL_LIBCLOCALE;HAVE_LOCAL_LIBCNOTIFY;HAVE_LOCAL_LIBCSPLIT;HAVE_LOCAL_LIBUNA;HAVE_LOCAL_LIBCFILE;HAVE_LOCAL_LIBCPATH;HAVE_LOCAL_LIBBFIO;HAVE_LOCAL_LIBFCACHE;HAVE_LOCAL_LIBFDATA;HAVE_LOCAL_LIBFDATETIME;HAVE_LOCAL_LIBFGUID;HAVE_LOCAL_LIBFWNT;HAVE_LOCAL_LIBFMAPI;ZLIB_DLL;LIBPFF_DLL_EXPORT;NOUNCRYPT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror;..\..\libcthreads;..\..\libcdata;..\..\libclocale;..\..\libcnotify;..\..\libcsplit;..\..\libuna;..\..\libcfile;..\..\libcpath;..\..\libbfio;..\..\libfcache;..\..\libfdata;..\..\libfdatetime;..\..\libfguid;..\..\libfwnt;..\..\libfmapi;..\..\zlib1211</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\zlib1211\adler32.c" />
+    <ClCompile Include="..\..\zlib1211\compress.c" />
+    <ClCompile Include="..\..\zlib1211\crc32.c" />
+    <ClCompile Include="..\..\zlib1211\deflate.c" />
+    <ClCompile Include="..\..\zlib1211\gzclose.c" />
+    <ClCompile Include="..\..\zlib1211\gzlib.c" />
+    <ClCompile Include="..\..\zlib1211\gzread.c" />
+    <ClCompile Include="..\..\zlib1211\gzwrite.c" />
+    <ClCompile Include="..\..\zlib1211\infback.c" />
+    <ClCompile Include="..\..\zlib1211\inffast.c" />
+    <ClCompile Include="..\..\zlib1211\inflate.c" />
+    <ClCompile Include="..\..\zlib1211\inftrees.c" />
+    <ClCompile Include="..\..\zlib1211\trees.c" />
+    <ClCompile Include="..\..\zlib1211\uncompr.c" />
+    <ClCompile Include="..\..\zlib1211\zutil.c" />
+    <ClCompile Include="..\..\libpff\libpff.c" />
+    <ClCompile Include="..\..\libpff\libpff_allocation_table.c" />
+    <ClCompile Include="..\..\libpff\libpff_attached_file_io_handle.c" />
+    <ClCompile Include="..\..\libpff\libpff_attachment.c" />
+    <ClCompile Include="..\..\libpff\libpff_column_definition.c" />
+    <ClCompile Include="..\..\libpff\libpff_compression.c" />
+    <ClCompile Include="..\..\libpff\libpff_data_array.c" />
+    <ClCompile Include="..\..\libpff\libpff_data_array_entry.c" />
+    <ClCompile Include="..\..\libpff\libpff_data_block.c" />
+    <ClCompile Include="..\..\libpff\libpff_debug.c" />
+    <ClCompile Include="..\..\libpff\libpff_deflate.c" />
+    <ClCompile Include="..\..\libpff\libpff_descriptors_index.c" />
+    <ClCompile Include="..\..\libpff\libpff_descriptor_data_stream.c" />
+    <ClCompile Include="..\..\libpff\libpff_encryption.c" />
+    <ClCompile Include="..\..\libpff\libpff_error.c" />
+    <ClCompile Include="..\..\libpff\libpff_file.c" />
+    <ClCompile Include="..\..\libpff\libpff_folder.c" />
+    <ClCompile Include="..\..\libpff\libpff_index.c" />
+    <ClCompile Include="..\..\libpff\libpff_index_node.c" />
+    <ClCompile Include="..\..\libpff\libpff_index_tree.c" />
+    <ClCompile Include="..\..\libpff\libpff_index_value.c" />
+    <ClCompile Include="..\..\libpff\libpff_io_handle.c" />
+    <ClCompile Include="..\..\libpff\libpff_io_handle2.c" />
+    <ClCompile Include="..\..\libpff\libpff_item.c" />
+    <ClCompile Include="..\..\libpff\libpff_item_descriptor.c" />
+    <ClCompile Include="..\..\libpff\libpff_item_tree.c" />
+    <ClCompile Include="..\..\libpff\libpff_item_values.c" />
+    <ClCompile Include="..\..\libpff\libpff_legacy.c" />
+    <ClCompile Include="..\..\libpff\libpff_local_descriptors.c" />
+    <ClCompile Include="..\..\libpff\libpff_local_descriptors_tree.c" />
+    <ClCompile Include="..\..\libpff\libpff_local_descriptor_node.c" />
+    <ClCompile Include="..\..\libpff\libpff_local_descriptor_value.c" />
+    <ClCompile Include="..\..\libpff\libpff_mapi_value.c" />
+    <ClCompile Include="..\..\libpff\libpff_message.c" />
+    <ClCompile Include="..\..\libpff\libpff_multi_value.c" />
+    <ClCompile Include="..\..\libpff\libpff_name_to_id_map.c" />
+    <ClCompile Include="..\..\libpff\libpff_notify.c" />
+    <ClCompile Include="..\..\libpff\libpff_offsets_index.c" />
+    <ClCompile Include="..\..\libpff\libpff_record_entry.c" />
+    <ClCompile Include="..\..\libpff\libpff_record_set.c" />
+    <ClCompile Include="..\..\libpff\libpff_recover.c" />
+    <ClCompile Include="..\..\libpff\libpff_reference_descriptor.c" />
+    <ClCompile Include="..\..\libpff\libpff_support.c" />
+    <ClCompile Include="..\..\libpff\libpff_table.c" />
+    <ClCompile Include="..\..\libpff\libpff_table_block_index.c" />
+    <ClCompile Include="..\..\libpff\libpff_table_index_value.c" />
+    <ClCompile Include="..\..\libpff\libpff_value_type.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libpff\libpff_allocation_table.h" />
+    <ClInclude Include="..\..\libpff\libpff_attached_file_io_handle.h" />
+    <ClInclude Include="..\..\libpff\libpff_attachment.h" />
+    <ClInclude Include="..\..\libpff\libpff_codepage.h" />
+    <ClInclude Include="..\..\libpff\libpff_column_definition.h" />
+    <ClInclude Include="..\..\libpff\libpff_compression.h" />
+    <ClInclude Include="..\..\libpff\libpff_data_array.h" />
+    <ClInclude Include="..\..\libpff\libpff_data_array_entry.h" />
+    <ClInclude Include="..\..\libpff\libpff_data_block.h" />
+    <ClInclude Include="..\..\libpff\libpff_debug.h" />
+    <ClInclude Include="..\..\libpff\libpff_definitions.h" />
+    <ClInclude Include="..\..\libpff\libpff_deflate.h" />
+    <ClInclude Include="..\..\libpff\libpff_descriptors_index.h" />
+    <ClInclude Include="..\..\libpff\libpff_descriptor_data_stream.h" />
+    <ClInclude Include="..\..\libpff\libpff_encryption.h" />
+    <ClInclude Include="..\..\libpff\libpff_error.h" />
+    <ClInclude Include="..\..\libpff\libpff_extern.h" />
+    <ClInclude Include="..\..\libpff\libpff_file.h" />
+    <ClInclude Include="..\..\libpff\libpff_folder.h" />
+    <ClInclude Include="..\..\libpff\libpff_free_map.h" />
+    <ClInclude Include="..\..\libpff\libpff_index.h" />
+    <ClInclude Include="..\..\libpff\libpff_index_node.h" />
+    <ClInclude Include="..\..\libpff\libpff_index_tree.h" />
+    <ClInclude Include="..\..\libpff\libpff_index_value.h" />
+    <ClInclude Include="..\..\libpff\libpff_io_handle.h" />
+    <ClInclude Include="..\..\libpff\libpff_io_handle2.h" />
+    <ClInclude Include="..\..\libpff\libpff_item.h" />
+    <ClInclude Include="..\..\libpff\libpff_item_descriptor.h" />
+    <ClInclude Include="..\..\libpff\libpff_item_tree.h" />
+    <ClInclude Include="..\..\libpff\libpff_item_values.h" />
+    <ClInclude Include="..\..\libpff\libpff_legacy.h" />
+    <ClInclude Include="..\..\libpff\libpff_libbfio.h" />
+    <ClInclude Include="..\..\libpff\libpff_libcdata.h" />
+    <ClInclude Include="..\..\libpff\libpff_libcerror.h" />
+    <ClInclude Include="..\..\libpff\libpff_libclocale.h" />
+    <ClInclude Include="..\..\libpff\libpff_libcnotify.h" />
+    <ClInclude Include="..\..\libpff\libpff_libfcache.h" />
+    <ClInclude Include="..\..\libpff\libpff_libfdata.h" />
+    <ClInclude Include="..\..\libpff\libpff_libfguid.h" />
+    <ClInclude Include="..\..\libpff\libpff_libfmapi.h" />
+    <ClInclude Include="..\..\libpff\libpff_libfvalue.h" />
+    <ClInclude Include="..\..\libpff\libpff_libuna.h" />
+    <ClInclude Include="..\..\libpff\libpff_local_descriptors.h" />
+    <ClInclude Include="..\..\libpff\libpff_local_descriptors_tree.h" />
+    <ClInclude Include="..\..\libpff\libpff_local_descriptor_node.h" />
+    <ClInclude Include="..\..\libpff\libpff_local_descriptor_value.h" />
+    <ClInclude Include="..\..\libpff\libpff_mapi.h" />
+    <ClInclude Include="..\..\libpff\libpff_mapi_value.h" />
+    <ClInclude Include="..\..\libpff\libpff_message.h" />
+    <ClInclude Include="..\..\libpff\libpff_multi_value.h" />
+    <ClInclude Include="..\..\libpff\libpff_name_to_id_map.h" />
+    <ClInclude Include="..\..\libpff\libpff_notify.h" />
+    <ClInclude Include="..\..\libpff\libpff_offsets_index.h" />
+    <ClInclude Include="..\..\libpff\libpff_record_entry.h" />
+    <ClInclude Include="..\..\libpff\libpff_record_entry_identifier.h" />
+    <ClInclude Include="..\..\libpff\libpff_record_set.h" />
+    <ClInclude Include="..\..\libpff\pff_allocation_table.h" />
+    <ClInclude Include="..\..\libpff\pff_array.h" />
+    <ClInclude Include="..\..\libpff\pff_block.h" />
+    <ClInclude Include="..\..\libpff\pff_file_header.h" />
+    <ClInclude Include="..\..\libpff\pff_free_map.h" />
+    <ClInclude Include="..\..\libpff\pff_index_node.h" />
+    <ClInclude Include="..\..\libpff\pff_local_descriptor_node.h" />
+    <ClInclude Include="..\..\libpff\pff_table.h" />
+    <ClInclude Include="..\..\libpff\pff_table_block.h" />
+    <ClInclude Include="..\..\libpff\pff_value_data.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\libpff\libpff.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libbfio\libbfio.vcxproj">
+      <Project>{41cfafbf-a1c8-4704-afef-31979e6452b9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcdata\libcdata.vcxproj">
+      <Project>{b9332dc8-7594-47df-80c1-38922e0f4dfb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcerror\libcerror.vcxproj">
+      <Project>{bd3a95fa-a3de-4b79-a889-a7e5eca4b69c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcfile\libcfile.vcxproj">
+      <Project>{4c93bdd3-1804-47f3-9b34-f2de0cae1ae0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libclocale\libclocale.vcxproj">
+      <Project>{cedf8919-00b2-4d8a-88cc-84adb2d2ff89}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcnotify\libcnotify.vcxproj">
+      <Project>{5304ad69-d449-4589-b2c9-e4607e56a51d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcpath\libcpath.vcxproj">
+      <Project>{3ffb9c05-1145-45a7-9ade-5c8d70fbd7ca}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcsplit\libcsplit.vcxproj">
+      <Project>{b86fb73a-4acc-42de-9545-586d93955b06}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libcthreads\libcthreads.vcxproj">
+      <Project>{8afaa2c6-e025-4b45-b96f-a27d04c6115a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfcache\libfcache.vcxproj">
+      <Project>{3d19eaad-9195-468b-bc5b-d147a89ca4f5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfdata\libfdata.vcxproj">
+      <Project>{f94dcc2d-2b49-453e-89b3-fd81992677d0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfdatetime\libfdatetime.vcxproj">
+      <Project>{25c60507-39c6-4564-912d-da2e7482a00f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfguid\libfguid.vcxproj">
+      <Project>{8c13e498-6369-4792-a0cf-b7134c54561b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfmapi\libfmapi.vcxproj">
+      <Project>{cdb03e65-c81b-47e0-b70f-c880d841dd61}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfvalue\libfvalue.vcxproj">
+      <Project>{85005d62-6aa7-4d8a-86cb-4061b23d7c6c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libfwnt\libfwnt.vcxproj">
+      <Project>{9d37639f-1694-47df-84bf-336d98e0639f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libuna\libuna.vcxproj">
+      <Project>{bc27ff34-c859-4a1a-95d6-fc89952e1910}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

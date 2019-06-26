@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\MasterProperties.include" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="VSDebug|x64">
+      <Configuration>VSDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>$(VCProjectVersion)</VCProjectVersion>
+    <ProjectGuid>{25C60507-39C6-4564-912D-DA2E7482A00F}</ProjectGuid>
+    <RootNamespace>libfdatetime</RootNamespace>
+    <WindowsTargetPlatformVersion>$(WindowsSDKVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>$(PlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCSTRING;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBFDATETIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='VSDebug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;..\..\common;..\..\libcerror</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;HAVE_LOCAL_LIBCSTRING;HAVE_LOCAL_LIBCERROR;HAVE_LOCAL_LIBFDATETIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_date_time_values.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_error.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_fat_date_time.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_filetime.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_floatingtime.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_nsf_timedate.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_posix_time.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_support.c" />
+    <ClCompile Include="..\..\libfdatetime\libfdatetime_systemtime.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_date_time_values.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_definitions.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_error.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_extern.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_fat_date_time.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_filetime.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_floatingtime.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_libcerror.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_libcstring.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_nsf_timedate.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_posix_time.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_support.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_systemtime.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_types.h" />
+    <ClInclude Include="..\..\libfdatetime\libfdatetime_unused.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

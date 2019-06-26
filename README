@@ -40,3 +40,24 @@ For more information see:
 * Project documentation: https://github.com/libyal/libpff/wiki/Home
 * How to build from source: https://github.com/libyal/libpff/wiki/Building
 
+====
+
+# Building On Windows
+
+From Powershell run the following scripts:
+
+* synclibs.ps1
+* synczlib.ps1
+* autogen.ps1
+
+This should pull down other libyal and zlib dependendencies and generate appropriate header files (common\Types.h, include\libpff.h, etc)
+
+From cmd run the following commands:
+
+* msbuild msvscpp\pffexport\pffexport.sln /p:Platform=x64;Configuration=Debug
+* msbuild msvscpp\pffexport\pffexport.sln /p:Platform=x64;Configuration=Release
+
+pffexport.exe & libpff.dll is now available here
+
+* \msvscpp\pffexport\x64\Debug
+* \msvscpp\pffexport\x64\Release

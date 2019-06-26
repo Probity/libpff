@@ -36,7 +36,7 @@ Function ExtractZip($Filename)
 $Filename = "${pwd}\zlib1211.zip"
 $Url = "http://zlib.net/zlib1211.zip"
 $ExtractedPath = "zlib-1.2.11"
-$DestinationPath = "..\zlib"
+$DestinationPath = "zlib1211"
 
 If (Test-Path ${Filename})
 {
