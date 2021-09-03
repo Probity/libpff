@@ -1,22 +1,22 @@
 /*
  * The file header definition of a Personal Folder File
  *
- * Copyright (C) 2008-2019, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (C) 2008-2021, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
- * This software is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This software is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this software.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #if !defined( _PFF_FILE_HEADER_H )
@@ -178,11 +178,11 @@ struct pff_file_header_data_32bit
 	 */
 	uint8_t initial_page_free_map[ 128 ];
 
-	/* Sentinal
+	/* Sentinel
 	 * Consists of 1 byte
 	 * 0x80
 	 */
-	uint8_t sentinal;
+	uint8_t sentinel;
 
 	/* The encryption type
 	 * Consists of 1 byte
@@ -319,10 +319,10 @@ struct pff_file_header_data_64bit
 	 */
 	uint8_t initial_page_free_map[ 128 ];
 
-	/* Sentinal
+	/* Sentinel
 	 * Consists of 1 byte
 	 */
-	uint8_t sentinal;
+	uint8_t sentinel;
 
 	/* The encryption type
 	 * Consists of 1 byte

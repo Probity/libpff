@@ -171,6 +171,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\libfwnt\libfwnt_huffman_tree.c"
+				>
+			</File>
+			<File
 				RelativePath="..\..\libfwnt\libfwnt_locale_identifier.c"
 				>
 			</File>
@@ -179,7 +183,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\libfwnt\libfwnt_lzx.c"
+				>
+			</File>
+			<File
 				RelativePath="..\..\libfwnt\libfwnt_lzxpress.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\libfwnt\libfwnt_notify.c"
 				>
 			</File>
 			<File
@@ -229,6 +241,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\libfwnt\libfwnt_huffman_tree.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\libfwnt\libfwnt_libcdata.h"
 				>
 			</File>
@@ -249,7 +265,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\libfwnt\libfwnt_lzx.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\libfwnt\libfwnt_lzxpress.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\libfwnt\libfwnt_notify.h"
 				>
 			</File>
 			<File

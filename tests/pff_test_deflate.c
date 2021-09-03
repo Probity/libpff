@@ -1,22 +1,22 @@
 /*
  * Library DEFLATE decompression testing program
  *
- * Copyright (C) 2008-2019, Joachim Metz <joachim.metz@gmail.com>
+ * Copyright (C) 2008-2021, Joachim Metz <joachim.metz@gmail.com>
  *
  * Refer to AUTHORS for acknowledgements.
  *
- * This software is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This software is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this software.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include <common.h>
@@ -698,19 +698,29 @@ int pff_test_deflate_bit_stream_get_value(
 	libpff_deflate_bit_stream_t bit_stream;
 
 	libcerror_error_t *error = NULL;
+	void *memset_result      = NULL;
 	uint32_t value_32bit     = 0;
 	int result               = 0;
 
 	/* Initialize test
 	 */
-        bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
-        bit_stream.byte_stream_size   = 2627;
-        bit_stream.byte_stream_offset = 0;
-        bit_stream.bit_buffer         = 0;
-        bit_stream.bit_buffer_size    = 0;
+	memset_result = memory_set(
+	                 &bit_stream,
+	                 0,
+	                 sizeof( libpff_deflate_bit_stream_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
 
 	/* Test regular cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 0;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
 	result = libpff_deflate_bit_stream_get_value(
 	          &bit_stream,
 	          0,
@@ -853,6 +863,12 @@ int pff_test_deflate_bit_stream_get_value(
 
 	/* Test error cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 0;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
 	result = libpff_deflate_bit_stream_get_value(
 	          NULL,
 	          32,
@@ -908,7 +924,7 @@ int pff_test_deflate_bit_stream_get_value(
 	 &error );
 
 	bit_stream.byte_stream_offset = 2627;
-        bit_stream.bit_buffer_size    = 0;
+	bit_stream.bit_buffer_size    = 0;
 
 	result = libpff_deflate_bit_stream_get_value(
 	          &bit_stream,
@@ -933,6 +949,11 @@ int pff_test_deflate_bit_stream_get_value(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -947,6 +968,7 @@ int pff_test_deflate_huffman_table_construct(
 	libpff_deflate_huffman_table_t table;
 
 	libcerror_error_t *error        = NULL;
+	void *memset_result             = NULL;
 	uint16_t symbol                 = 0;
 	int result                      = 0;
 
@@ -957,6 +979,15 @@ int pff_test_deflate_huffman_table_construct(
 
 	/* Initialize test
 	 */
+	memset_result = memory_set(
+	                 &table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
 	for( symbol = 0;
 	     symbol < 318;
 	     symbol++ )
@@ -1097,6 +1128,11 @@ int pff_test_deflate_huffman_table_construct(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1111,16 +1147,38 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 	libpff_deflate_huffman_table_t literals_table;
 
 	libcerror_error_t *error = NULL;
+	void *memset_result      = NULL;
 	uint32_t value_32bit     = 0;
 	int result               = 0;
 
 	/* Initialize test
 	 */
-        bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
-        bit_stream.byte_stream_size   = 2627;
-        bit_stream.byte_stream_offset = 2;
-        bit_stream.bit_buffer         = 0;
-        bit_stream.bit_buffer_size    = 0;
+	memset_result = memory_set(
+	                 &bit_stream,
+	                 0,
+	                 sizeof( libpff_deflate_bit_stream_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &distances_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &literals_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
 
 	result = libpff_deflate_initialize_fixed_huffman_tables(
 	          &literals_table,
@@ -1138,6 +1196,12 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 
 	/* Test regular cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
 	value_32bit = 0;
 
 	result = libpff_deflate_bit_stream_get_huffman_encoded_value(
@@ -1162,6 +1226,12 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 
 	/* Test error cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
 	value_32bit = 0;
 
 	result = libpff_deflate_bit_stream_get_huffman_encoded_value(
@@ -1218,8 +1288,8 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 	libcerror_error_free(
 	 &error );
 
-        bit_stream.byte_stream_offset = 2627;
-        bit_stream.bit_buffer_size    = 0;
+	bit_stream.byte_stream_offset = 2627;
+	bit_stream.bit_buffer_size    = 0;
 
 	result = libpff_deflate_bit_stream_get_huffman_encoded_value(
 	          &bit_stream,
@@ -1227,7 +1297,7 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 	          &value_32bit,
 	          &error );
 
-        bit_stream.byte_stream_offset = 2;
+	bit_stream.byte_stream_offset = 2;
 
 	PFF_TEST_ASSERT_EQUAL_INT(
 	 "result",
@@ -1244,6 +1314,11 @@ int pff_test_deflate_bit_stream_get_huffman_encoded_value(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1258,6 +1333,8 @@ int pff_test_deflate_initialize_dynamic_huffman_tables(
 	libpff_deflate_huffman_table_t literals_table;
 
 	libcerror_error_t *error        = NULL;
+	void *memset_result             = NULL;
+	uint32_t value_32bit            = 0;
 	int result                      = 0;
 
 #if defined( HAVE_PFF_TEST_MEMORY )
@@ -1265,11 +1342,106 @@ int pff_test_deflate_initialize_dynamic_huffman_tables(
 	int test_number                 = 0;
 #endif
 
+	/* Initialize test
+	 */
+	memset_result = memory_set(
+	                 &bit_stream,
+	                 0,
+	                 sizeof( libpff_deflate_bit_stream_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &distances_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &literals_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
 	/* Test regular cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_bit_stream_get_value(
+	          &bit_stream,
+	          3,
+	          &value_32bit,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_UINT32(
+	 "value_32bit",
+	 value_32bit,
+	 (uint32_t) 0x00000005UL );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	result = libpff_deflate_initialize_dynamic_huffman_tables(
+	          &bit_stream,
+	          &literals_table,
+	          &distances_table,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_bit_stream_get_value(
+	          &bit_stream,
+	          3,
+	          &value_32bit,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_UINT32(
+	 "value_32bit",
+	 value_32bit,
+	 (uint32_t) 0x00000005UL );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
 	result = libpff_deflate_initialize_dynamic_huffman_tables(
 	          NULL,
 	          &literals_table,
@@ -1364,6 +1536,11 @@ int pff_test_deflate_initialize_dynamic_huffman_tables(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1377,12 +1554,33 @@ int pff_test_deflate_initialize_fixed_huffman_tables(
 	libpff_deflate_huffman_table_t literals_table;
 
 	libcerror_error_t *error        = NULL;
+	void *memset_result             = NULL;
 	int result                      = 0;
 
 #if defined( HAVE_PFF_TEST_MEMORY )
 	int number_of_memset_fail_tests = 4;
 	int test_number                 = 0;
 #endif
+
+	/* Initialize test
+	 */
+	memset_result = memory_set(
+	                 &distances_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &literals_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
 
 	/* Test regular cases
 	 */
@@ -1475,6 +1673,11 @@ int pff_test_deflate_initialize_fixed_huffman_tables(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1491,14 +1694,144 @@ int pff_test_deflate_decode_huffman(
 	libpff_deflate_huffman_table_t literals_table;
 
 	libcerror_error_t *error        = NULL;
+	void *memset_result             = NULL;
 	size_t uncompressed_data_offset = 0;
+	uint32_t value_32bit            = 0;
 	int result                      = 0;
+
+	/* Initialize test
+	 */
+	memset_result = memory_set(
+	                 &bit_stream,
+	                 0,
+	                 sizeof( libpff_deflate_bit_stream_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &distances_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	memset_result = memory_set(
+	                 &literals_table,
+	                 0,
+	                 sizeof( libpff_deflate_huffman_table_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
 
 	/* Test regular cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_bit_stream_get_value(
+	          &bit_stream,
+	          3,
+	          &value_32bit,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_UINT32(
+	 "value_32bit",
+	 value_32bit,
+	 (uint32_t) 0x00000005UL );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	result = libpff_deflate_initialize_dynamic_huffman_tables(
+	          &bit_stream,
+	          &literals_table,
+	          &distances_table,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	result = libpff_deflate_decode_huffman(
+	          &bit_stream,
+	          &literals_table,
+	          &distances_table,
+	          uncompressed_data,
+	          8192,
+	          &uncompressed_data_offset,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
 
 	/* Test error cases
 	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_bit_stream_get_value(
+	          &bit_stream,
+	          3,
+	          &value_32bit,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_UINT32(
+	 "value_32bit",
+	 value_32bit,
+	 (uint32_t) 0x00000005UL );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	result = libpff_deflate_initialize_dynamic_huffman_tables(
+	          &bit_stream,
+	          &literals_table,
+	          &distances_table,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
 	result = libpff_deflate_decode_huffman(
 	          NULL,
 	          &literals_table,
@@ -1628,6 +1961,11 @@ int pff_test_deflate_decode_huffman(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1726,6 +2064,314 @@ int pff_test_deflate_calculate_adler32(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* Tests the libpff_deflate_read_data_header function
+ * Returns 1 if successful or 0 if not
+ */
+int pff_test_deflate_read_data_header(
+     void )
+{
+	libcerror_error_t *error        = NULL;
+	size_t uncompressed_data_offset = 0;
+	int result                      = 0;
+
+	/* Test regular cases
+	 */
+	uncompressed_data_offset = 0;
+
+	result = libpff_deflate_read_data_header(
+	          pff_test_deflate_compressed_byte_stream,
+	          2627,
+	          &uncompressed_data_offset,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_SIZE(
+	 "uncompressed_data_offset",
+	 uncompressed_data_offset,
+	 (size_t) 2 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+	/* Test error cases
+	 */
+	uncompressed_data_offset = 0;
+
+	result = libpff_deflate_read_data_header(
+	          NULL,
+	          2627,
+	          &uncompressed_data_offset,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_data_header(
+	          pff_test_deflate_compressed_byte_stream,
+	          (size_t) SSIZE_MAX + 1,
+	          &uncompressed_data_offset,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_data_header(
+	          pff_test_deflate_compressed_byte_stream,
+	          2627,
+	          NULL,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_data_header(
+	          pff_test_deflate_compressed_byte_stream,
+	          1,
+	          &uncompressed_data_offset,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+/* TODO test compression_method != 8 */
+/* TODO test compression_window_size > 32768 */
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* Tests the libpff_deflate_read_block function
+ * Returns 1 if successful or 0 if not
+ */
+int pff_test_deflate_read_block(
+     void )
+{
+	uint8_t uncompressed_data[ 8192 ];
+
+	libpff_deflate_bit_stream_t bit_stream;
+
+	libcerror_error_t *error        = NULL;
+	void *memset_result             = NULL;
+	size_t uncompressed_data_offset = 0;
+	size_t uncompressed_data_size   = 7640;
+	uint8_t last_block_flag         = 0;
+	int result                      = 0;
+
+	/* Initialize test
+	 */
+	memset_result = memory_set(
+	                 &bit_stream,
+	                 0,
+	                 sizeof( libpff_deflate_bit_stream_t ) );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "memset_result",
+	 memset_result );
+
+	/* Test regular cases
+	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_read_block(
+	          &bit_stream,
+	          uncompressed_data,
+	          uncompressed_data_size,
+	          &uncompressed_data_offset,
+	          &last_block_flag,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_SIZE(
+	 "uncompressed_data_size",
+	 uncompressed_data_size,
+	 (size_t) 7640 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+/* TODO: test uncompressed data too small */
+
+	/* Test error cases
+	 */
+	bit_stream.byte_stream        = pff_test_deflate_compressed_byte_stream;
+	bit_stream.byte_stream_size   = 2627;
+	bit_stream.byte_stream_offset = 2;
+	bit_stream.bit_buffer         = 0;
+	bit_stream.bit_buffer_size    = 0;
+
+	result = libpff_deflate_read_block(
+	          NULL,
+	          uncompressed_data,
+	          uncompressed_data_size,
+	          &uncompressed_data_offset,
+	          &last_block_flag,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_block(
+	          &bit_stream,
+	          NULL,
+	          uncompressed_data_size,
+	          &uncompressed_data_offset,
+	          &last_block_flag,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_block(
+	          &bit_stream,
+	          uncompressed_data,
+	          (size_t) SSIZE_MAX + 1,
+	          &uncompressed_data_offset,
+	          &last_block_flag,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_block(
+	          &bit_stream,
+	          uncompressed_data,
+	          uncompressed_data_size,
+	          NULL,
+	          &last_block_flag,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_read_block(
+	          &bit_stream,
+	          uncompressed_data,
+	          uncompressed_data_size,
+	          &uncompressed_data_offset,
+	          NULL,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1744,8 +2390,8 @@ int pff_test_deflate_decompress(
 	/* Test regular cases
 	 */
 	result = libpff_deflate_decompress(
-	          pff_test_deflate_compressed_byte_stream,
-	          2627,
+	          &( pff_test_deflate_compressed_byte_stream[ 2 ] ),
+	          2627 - 6,
 	          uncompressed_data,
 	          &uncompressed_data_size,
 	          &error );
@@ -1770,7 +2416,7 @@ int pff_test_deflate_decompress(
 	 */
 	result = libpff_deflate_decompress(
 	          NULL,
-	          2627,
+	          2627 - 6,
 	          uncompressed_data,
 	          &uncompressed_data_size,
 	          &error );
@@ -1788,7 +2434,7 @@ int pff_test_deflate_decompress(
 	 &error );
 
 	result = libpff_deflate_decompress(
-	          pff_test_deflate_compressed_byte_stream,
+	          &( pff_test_deflate_compressed_byte_stream[ 2 ] ),
 	          (size_t) SSIZE_MAX + 1,
 	          uncompressed_data,
 	          &uncompressed_data_size,
@@ -1807,6 +2453,132 @@ int pff_test_deflate_decompress(
 	 &error );
 
 	result = libpff_deflate_decompress(
+	          &( pff_test_deflate_compressed_byte_stream[ 2 ] ),
+	          2627 - 6,
+	          NULL,
+	          &uncompressed_data_size,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_decompress(
+	          &( pff_test_deflate_compressed_byte_stream[ 2 ] ),
+	          2627 - 6,
+	          uncompressed_data,
+	          NULL,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	return( 1 );
+
+on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
+	return( 0 );
+}
+
+/* Tests the libpff_deflate_decompress_zlib function
+ * Returns 1 if successful or 0 if not
+ */
+int pff_test_deflate_decompress_zlib(
+     void )
+{
+	uint8_t uncompressed_data[ 8192 ];
+
+	libcerror_error_t *error      = NULL;
+	size_t uncompressed_data_size = 7640;
+	int result                    = 0;
+
+	/* Test regular cases
+	 */
+	result = libpff_deflate_decompress_zlib(
+	          pff_test_deflate_compressed_byte_stream,
+	          2627,
+	          uncompressed_data,
+	          &uncompressed_data_size,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 1 );
+
+	PFF_TEST_ASSERT_EQUAL_SIZE(
+	 "uncompressed_data_size",
+	 uncompressed_data_size,
+	 (size_t) 7640 );
+
+	PFF_TEST_ASSERT_IS_NULL(
+	 "error",
+	 error );
+
+/* TODO: test uncompressed data too small */
+
+	/* Test error cases
+	 */
+	result = libpff_deflate_decompress_zlib(
+	          NULL,
+	          2627,
+	          uncompressed_data,
+	          &uncompressed_data_size,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_decompress_zlib(
+	          pff_test_deflate_compressed_byte_stream,
+	          (size_t) SSIZE_MAX + 1,
+	          uncompressed_data,
+	          &uncompressed_data_size,
+	          &error );
+
+	PFF_TEST_ASSERT_EQUAL_INT(
+	 "result",
+	 result,
+	 -1 );
+
+	PFF_TEST_ASSERT_IS_NOT_NULL(
+	 "error",
+	 error );
+
+	libcerror_error_free(
+	 &error );
+
+	result = libpff_deflate_decompress_zlib(
 	          pff_test_deflate_compressed_byte_stream,
 	          2627,
 	          NULL,
@@ -1825,7 +2597,7 @@ int pff_test_deflate_decompress(
 	libcerror_error_free(
 	 &error );
 
-	result = libpff_deflate_decompress(
+	result = libpff_deflate_decompress_zlib(
 	          pff_test_deflate_compressed_byte_stream,
 	          2627,
 	          uncompressed_data,
@@ -1847,6 +2619,11 @@ int pff_test_deflate_decompress(
 	return( 1 );
 
 on_error:
+	if( error != NULL )
+	{
+		libcerror_error_free(
+		 &error );
+	}
 	return( 0 );
 }
 
@@ -1867,7 +2644,6 @@ int main(
 	PFF_TEST_UNREFERENCED_PARAMETER( argc )
 	PFF_TEST_UNREFERENCED_PARAMETER( argv )
 
-#define PFF_TEST_DEFLATE
 #if defined( HAVE_DEBUG_OUTPUT ) && defined( PFF_TEST_DEFLATE )
 	libcnotify_verbose_set(
 	 1 );
@@ -1907,8 +2683,20 @@ int main(
 	 pff_test_deflate_calculate_adler32 );
 
 	PFF_TEST_RUN(
+	 "libpff_deflate_read_data_header",
+	 pff_test_deflate_read_data_header );
+
+	PFF_TEST_RUN(
+	 "libpff_deflate_read_block",
+	 pff_test_deflate_read_block );
+
+	PFF_TEST_RUN(
 	 "libpff_deflate_decompress",
 	 pff_test_deflate_decompress );
+
+	PFF_TEST_RUN(
+	 "libpff_deflate_decompress_zlib",
+	 pff_test_deflate_decompress_zlib );
 
 #endif /* defined( __GNUC__ ) && !defined( LIBPFF_DLL_IMPORT ) */
 
